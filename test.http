@@ -33,3 +33,15 @@ POST http://localhost:3000/
 Content-Type: application/x-www-form-urlencoded
 
 username=sourav&email=sourav@example.com&password=123456
+
+### json for db
+### Create User
+POST http://localhost:3000/
+Content-Type: application/json
+
+{
+  "name": "Sourav",
+  "age": 25,
+  "email": "sourav@example.com",
+  "password": "secret123"
+}
