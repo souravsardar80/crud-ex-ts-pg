@@ -1,0 +1,35 @@
+POST http://localhost:3000/
+Content-Type: application/json
+
+{
+  "user": {
+    "firstName": "Sourav",
+    "lastName": "Sarkar"
+  }
+}
+
+### text sending
+POST http://localhost:3000/
+Content-Type: text/plain
+
+Hello Sourav
+
+### url encoded
+POST http://localhost:3000/
+Content-Type: application/x-www-form-urlencoded
+
+name=Sourav&role=Admin
+
+
+
+### nested url encoded
+POST http://localhost:3000/
+Content-Type: application/x-www-form-urlencoded
+
+name=Sourav&address[city]=Kolkata&address[country]=India
+
+### url encoded username password
+POST http://localhost:3000/
+Content-Type: application/x-www-form-urlencoded
+
+username=sourav&email=sourav@example.com&password=123456
