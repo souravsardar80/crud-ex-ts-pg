@@ -47,7 +47,7 @@ app.get("/", (req: Request, res: Response) => {
   });
 });
 
-app.post("/", async (req: Request, res: Response) => {
+app.post("/api/users", async (req: Request, res: Response) => {
   // console.log("Body", req.body);
 
   // const { username, email, password } = req.body;
@@ -78,6 +78,64 @@ app.post("/", async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       message: error.message,
+      error: error,
+    });
+  }
+});
+
+//getting all users
+app.get("/api/users", async (req: Request, res: Response) => {
+  try {
+    const result = await pool.query(`
+      SELECT * FROM users
+    `);
+
+    res.status(200).json({
+      message: "User retrived successfully.",
+      success: true,
+      data: result.rows,
+    });
+    // console.log(result.rows);
+  } catch (error: any) {
+    res.status(500).json({
+      message: error.message,
+      success: false,
+      error: error,
+    });
+  }
+});
+
+//get single user
+app.get("/api/users/:id", async (req: Request, res: Response) => {
+  // const id = req.params.id;
+  const { id } = req.params;
+  // console.log(req.params);
+
+  try {
+    const result = await pool.query(
+      `
+    SELECT * FROM users WHERE id=$1
+    `,
+      [id],
+    );
+
+    if (result.rows.length === 0) {
+      res.status(500).json({
+        message: "Users not found",
+        success: false,
+        error: {},
+      });
+    } else {
+      res.status(200).json({
+        message: "User retrived successfully.",
+        success: true,
+        data: result.rows[0],
+      });
+    }
+  } catch (error: any) {
+    res.status(500).json({
+      message: error.message,
+      success: false,
       error: error,
     });
   }

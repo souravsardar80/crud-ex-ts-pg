@@ -45,3 +45,21 @@ Content-Type: application/json
   "email": "sourav@example.com",
   "password": "secret123"
 }
+
+### Create Users api
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+  "name": "Sourav",
+  "age": 25,
+  "email": "sardar@example.com",
+  "password": "secret123"
+}
+
+
+### get all users
+GET http://localhost:3000/api/users
+
+### get single id
+GET http://localhost:3000/api/users/6
