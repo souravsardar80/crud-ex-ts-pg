@@ -51,8 +51,8 @@ POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-  "name": "Sourav",
-  "age": 25,
+  "name": "Cytherea",
+  "age": 35,
   "email": "sardar@example.com",
   "password": "secret123"
 }
@@ -75,3 +75,14 @@ Content-Type: application/json
   "is_active": false,
   "password": "lola123"
 }
+
+### null safe test for update
+PUT http://localhost:3000/api/users/7
+Content-Type: application/json
+
+{
+  "age": 27
+}
+
+### delete user 
+DELETE http://localhost:3000/api/users/7
